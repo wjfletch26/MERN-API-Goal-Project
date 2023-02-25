@@ -16,16 +16,16 @@ const getGoals = asyncHandler(async (req, res) => {
 // @route   POST /api/goals
 // @access  Private
 // asyncHandler is a function that has to meet some peramitor before it runs 
-const setGoal = asyncHandler(async (req, res) => {
-    if (!req.body.text) {
-        res.status(400)
-        throw new Error('Please add a text field')
-    }
-
+// const setGoal = asyncHandler(async (req, res) => {
+//     if (!req.body.text) {
+//         res.status(400)
+//         throw new Error('Please add a text field')
+//     }
+const setGoal = asyncHandler(async (req, res) =>
     const goal = await Goal.create({
-        text: req.body.text,
-        user: req.user.id,
-    })
+    text: req.body.text,
+    user: req.user.id,
+})
 
     res.status(200).json(goal)
 })
